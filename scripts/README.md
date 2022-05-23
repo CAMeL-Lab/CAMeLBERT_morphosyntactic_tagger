@@ -11,6 +11,8 @@ Pre-trained language models are avaialble on Hugging Face model hub. To download
 export SEED=12345
 export BERT_MODEL=/path/to/pretrained_model
 export DATA_DIR=/path/to/data
+# note that for training the unfactored model, specify the unfactored_tag directory
+# for training the factored model, you need to run this for each directory for individual morphosyntactic feature
 export OUTPUT_DIR=./train_MSA_full_unfactored
 export BATCH_SIZE=32
 export NUM_EPOCHS=10

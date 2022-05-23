@@ -11,6 +11,8 @@ cd CAMeLBERT_morphosyntactic_tagger
 conda create -n CAMeLBERT_morphosyntactic_tagger python=3.7
 conda activate CAMeLBERT_morphosyntactic_tagger
 
+pip install -r requirements.txt
+
 # install the latest camel tools
 git clone https://github.com/CAMeL-Lab/camel_tools.git
 cd camel_tools
@@ -18,13 +20,9 @@ cd camel_tools
 pip install -e .
 # download models
 camel_data -i disambig-bert-unfactored-all
-cd ..
-
-# install other requirements
-pip install -r requirements.txt
 ```
 
-## How to tag a sentence
+## Example: How to tag a sentence
 ```python
 from camel_tools.tokenizers.word import simple_word_tokenize
 from camel_tools.disambig.bert import BERTUnfactoredDisambiguator
@@ -39,6 +37,7 @@ MSA_unfactored.tag_sentence(MSA_text)
 # without the analyzer
 MSA_unfactored.tag_sentence(MSA_text, use_analyzer=False)
 ```
+* The morphological analyzer used in the example is not the same as the one in the paper.
 
 ## Experiments
 This repo is organized as follows:
