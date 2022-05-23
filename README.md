@@ -1,7 +1,7 @@
 # CAMeLBERT_morphosyntactic_tagger
 Codebase for "[Morphosyntactic Tagging with Pre-trained Language Models for Arabic and its Dialects](https://aclanthology.org/2022.findings-acl.135/)". Findings of ACL, 2022.
 
-Some of the models are already part of the newer version of [CAMeL Tools](https://github.com/CAMeL-Lab/camel_tools). Please check out the repository if you want to try out our tagger!
+Some of the models are already part of the newer version of [CAMeL Tools](https://github.com/CAMeL-Lab/camel_tools). Please check out the repository if you want to try out our tagger! Currently, unfactored MSA, EGY, and GLF models are available through CAMeL Tools.
 
 ## Requirements
 ```bash
@@ -11,8 +11,33 @@ cd CAMeLBERT_morphosyntactic_tagger
 conda create -n CAMeLBERT_morphosyntactic_tagger python=3.7
 conda activate CAMeLBERT_morphosyntactic_tagger
 
-pip install -U git+https://github.com/go-inoue/camel_tools.git@bert-disambig
+# install the latest camel tools
+git clone https://github.com/CAMeL-Lab/camel_tools.git
+cd camel_tools
+# Install from source
+pip install -e .
+# download models
+camel_data -i disambig-bert-unfactored-all
+cd ..
+
+# install other requirements
 pip install -r requirements.txt
+```
+
+## How to tag a sentence
+```python
+from camel_tools.tokenizers.word import simple_word_tokenize
+from camel_tools.disambig.bert import BERTUnfactoredDisambiguator
+
+# MSA
+MSA_unfactored = BERTUnfactoredDisambiguator.pretrained(model_name='msa')
+MSA_text = simple_word_tokenize('كيف حالك ؟')
+
+# tag with the analyzer
+MSA_unfactored.tag_sentence(MSA_text)
+
+# without the analyzer
+MSA_unfactored.tag_sentence(MSA_text, use_analyzer=False)
 ```
 
 ## Experiments
