@@ -37,7 +37,7 @@ MSA_unfactored.tag_sentence(MSA_text)
 # without the analyzer
 MSA_unfactored.tag_sentence(MSA_text, use_analyzer=False)
 ```
-* The morphological analyzer used in the example is not the same as the one in the paper.
+* Note: The morphological analyzer used in the example is not the same as the one in the paper, which is licensed by LDC.
 
 ## Experiments
 This repo is organized as follows:
