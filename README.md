@@ -28,16 +28,30 @@ from camel_tools.tokenizers.word import simple_word_tokenize
 from camel_tools.disambig.bert import BERTUnfactoredDisambiguator
 
 # MSA
-MSA_unfactored = BERTUnfactoredDisambiguator.pretrained(model_name='msa')
-MSA_text = simple_word_tokenize('كيف حالك ؟')
+unfactored = BERTUnfactoredDisambiguator.pretrained(model_name='msa')
+
+text = simple_word_tokenize('كيف حالك ؟')
 
 # tag with the analyzer
-MSA_unfactored.tag_sentence(MSA_text)
+unfactored.tag_sentence(text)
 
 # without the analyzer
-MSA_unfactored.tag_sentence(MSA_text, use_analyzer=False)
+unfactored.tag_sentence(text, use_analyzer=False)
 ```
-* Note: The morphological analyzer used in the example is not the same as the one in the paper, which is licensed by LDC.
+* **Important Note**: The morphological analyzer used in the example is not the same as the one in the paper, which is licensed by LDC. You can download the same morphogical analyzer [here](https://github.com/CAMeL-Lab/CAMeLBERT_morphosyntactic_tagger/releases/tag/v0.0.1). To use this analyzer in CAMeL-Tools, you will need to initialize the model as follows:
+  ```python
+  from camel_tools.morphology.database import MorphologyDB
+  from camel_tools.morphology.analyzer import Analyzer
+
+  # MSA
+  db = MorphologyDB("/PATH/TO/DB", 'a')
+  analyzer = Analyzer(db, 'ADD_PROP', cache_size=100000)
+
+  # Make sure to set pretrained_cache=False if you're not using the default analyzer
+  unfactored = BERTUnfactoredDisambiguator.pretrained(model_name='msa', pretrained_cache=False)
+  # Use the specified analyzer instead of the default one in CAMeL-Tools
+  unfactored._analyzer = analyzer
+  ```
 
 ## Experiments
 This repo is organized as follows:
