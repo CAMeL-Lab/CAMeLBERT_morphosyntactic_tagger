@@ -1,7 +1,7 @@
 # CAMeLBERT_morphosyntactic_tagger
 Codebase for "[Morphosyntactic Tagging with Pre-trained Language Models for Arabic and its Dialects](https://aclanthology.org/2022.findings-acl.135/)". Findings of ACL, 2022.
 
-Some of the models are already part of the newer version of [CAMeL Tools](https://github.com/CAMeL-Lab/camel_tools). Please check out the repository if you want to try out our tagger! Currently, unfactored MSA, EGY, and GLF models are available through CAMeL Tools.
+Some of the models are already part of the newer version of [CAMeL Tools](https://github.com/CAMeL-Lab/camel_tools). Please check out the repository if you want to try out our tagger! Currently, unfactored MSA, EGY, GLF, and LEV models are available through CAMeL Tools.
 
 ## Requirements
 ```bash
