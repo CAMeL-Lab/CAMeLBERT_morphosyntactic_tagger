@@ -40,6 +40,7 @@ unfactored.tag_sentence(text, use_analyzer=False)
 ```
 * **Important Note**: The morphological analyzer used in the example is not the same as the one in the paper, which is licensed by LDC. You can download the same morphogical analyzer [here](https://github.com/CAMeL-Lab/CAMeLBERT_morphosyntactic_tagger/releases/tag/v0.0.1). To use this analyzer in CAMeL-Tools, you will need to initialize the model as follows:
   ```python
+  from camel_tools.disambig.bert import BERTUnfactoredDisambiguator
   from camel_tools.morphology.database import MorphologyDB
   from camel_tools.morphology.analyzer import Analyzer
 
